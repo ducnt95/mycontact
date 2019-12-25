@@ -20,6 +20,12 @@ public class ContactController {
 
     @Autowired
     private ContactService contactService;
+    
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("contacts", contactService.findAll());
+        return "list";
+    }
 
     @GetMapping("/contact")
     public String list(Model model) {
